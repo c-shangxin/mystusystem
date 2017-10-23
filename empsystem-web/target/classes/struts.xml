@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	
+	<!-- 设置系统参数 -->
+	<constant name="struts.devMode" value="true"/>
+	<constant name="struts.ui.theme" value="simple"/>
+
+	<!-- 设置Action -->
+	<package name="mytest" extends="json-default">
+		<global-allowed-methods>regex:.*</global-allowed-methods>
+		<action name="deptAction_*" method="{1}" class="deptAction">
+			<result name="index">/index.jsp</result>
+		</action>
+		<action name="empAction_*" method="{1}" class="empAction">
+			<result name="index">/index.jsp</result>
+			<result name="addEmp">/addEmp.jsp</result>
+			<result name="toAddEmp" type="redirectAction">empAction_toAddEmp</result>
+			<result name="empList">/empList.jsp</result>
+			<result name="toupdateEmp">/updateEmp.jsp</result>
+			<result name="doupdateEmp" type="redirectAction">empAction_findEmps</result>
+			<result name="deleteEmp" type="redirectAction">empAction_findEmps</result>
+		</action> 
+	</package>
+</struts>
+
+
+
+
+
